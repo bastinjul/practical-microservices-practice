@@ -1,4 +1,4 @@
-package be.julienbastin.pract.microserv.chap1;
+package be.julienbastin.pract.microserv;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

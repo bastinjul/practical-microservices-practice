@@ -22,7 +22,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>chapter-1</module>
+        <module>backend</module>
     </modules>
 
 </project>
