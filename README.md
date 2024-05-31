@@ -1,2 +1,2 @@
-# practical-microservices-practice
-Practice of Practical Microservices book (Ethan Garofolo - The Pragmatic Programmer) using Spring instead of NodeJS
+# Practical Microservices in Spring
+In this project, I develop the same project as the book [Practical Microservices - Build Event-Driven Architectures with Event Sourcing and CQRS (Ethan Garofolo - The Pragmatic Programmer)](https://pragprog.com/titles/egmicro/practical-microservices/) but using SpringBoot and Java21 instead of NodeJS.

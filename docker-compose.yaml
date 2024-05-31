@@ -1,0 +1,47 @@
+name: practical-microservices
+
+services:
+  chapter-1-backend:
+    image: local/practical-microservices/chap-1/backend
+    profiles:
+      - chapter-1
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/app
+      - ./.m2:/root/.m2
+    working_dir: /app
+    command: sh ./scripts/run.sh ./chapter-1/backend
+    ports:
+      - "8080:8080"
+      - "35729:35729"
+      - "5005:5005"
+    environment:
+      DB_USERNAME: $DB_USERNAME
+      DB_PASSWORD: $DB_PASSWORD
+
+  db:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./scripts/create_db.sh:/docker-entrypoint-initdb.d/create_db.sh
+    environment:
+      POSTGRES_MULTIPLE_DATABASES: chapter1
+      POSTGRES_USER: $DB_USERNAME
+      POSTGRES_PASSWORD: $DB_PASSWORD
+
+  frontend:
+    image: node:lts-iron
+    ports:
+      - "4200:4200"
+    build:
+      context: frontend
+    volumes:
+      - ./frontend/:/opt/app/
+      - node_modules:/opt/app/node_modules
+    command: sh -c "npm i && npm start"
+
+volumes:
+  node_modules:
