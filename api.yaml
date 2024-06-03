@@ -1,0 +1,47 @@
+openapi: 3.0.3
+info:
+  title: Video tutorial
+  description: Title
+  version: 1.0.0
+servers:
+  - url: 'http://localhost:8080/api'
+tags:
+  - name: video
+paths:
+  /videos:
+    post:
+      operationId: newVideo
+      description: Create a new video
+      tags:
+        - video
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/Video'
+      responses:
+        200:
+          description: ok
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Video'
+components:
+  schemas:
+    Video:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        owner_id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        transcoding_status:
+          type: string
+        view_count:
+          type: integer
+          format: int64

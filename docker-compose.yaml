@@ -16,8 +16,8 @@ services:
       - "35729:35729"
       - "5005:5005"
     environment:
-      DB_USERNAME: $DB_USERNAME
-      DB_PASSWORD: $DB_PASSWORD
+      DB_USERNAME: db1
+      DB_PASSWORD: db1
 
   db:
     image: postgres:latest
@@ -27,8 +27,9 @@ services:
       - ./scripts/create_db.sh:/docker-entrypoint-initdb.d/create_db.sh
     environment:
       POSTGRES_MULTIPLE_DATABASES: db1
-      POSTGRES_USER: $DB_USERNAME
-      POSTGRES_PASSWORD: $DB_PASSWORD
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: practmicroserv
 
   frontend:
     image: node:lts-iron

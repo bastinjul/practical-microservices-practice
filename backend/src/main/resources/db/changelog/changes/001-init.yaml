@@ -1,0 +1,27 @@
+databaseChangeLog:
+  - changeSet:
+      author: Julien Bastin
+      id: "001"
+      changes:
+        - createTable:
+            tableName: videos
+            columns:
+              - column:
+                  name: id
+                  autoIncrement: true
+                  type: bigint
+              - column:
+                  name: owner_id
+                  type: varchar(63)
+              - column:
+                  name: name
+                  type: varchar(63)
+              - column:
+                  name: description
+                  type: varchar(255)
+              - column:
+                  name: transcoding_status
+                  type: varchar(63)
+              - column:
+                  name: view_count
+                  type: bigint
